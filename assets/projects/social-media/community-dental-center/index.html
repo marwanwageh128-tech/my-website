@@ -4,58 +4,596 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Community Dental Center - Social Media Campaign by Marwan Wageh.">
+
 <title>Community Dental Center | Marwan Wageh</title>
-<link rel="stylesheet" href="../../../../style.css">
+
+<!-- Main Website CSS -->
+<link rel="stylesheet" href="../../../../assets/style.css">
+
 <style>
-.gallery {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:20px;
-  margin:40px 0;
+
+/* =================================
+   PROJECT PAGE
+================================= */
+
+.project-hero {
+    padding-bottom: 45px;
 }
-.gallery img {
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:14px;
-  transition:transform .3s;
+
+.project-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #a3ff12;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
 }
-.gallery img:hover {transform:scale(1.02)}
-@media(max-width:650px) {
-  .gallery {grid-template-columns:1fr}
+
+.project-label::before {
+    content: "";
+    width: 25px;
+    height: 2px;
+    background: #a3ff12;
 }
+
+.project-description {
+    max-width: 650px;
+    line-height: 1.8;
+}
+
+/* =================================
+   GALLERY HEADER
+================================= */
+
+.gallery-section {
+    padding-top: 30px;
+    padding-bottom: 100px;
+}
+
+.gallery-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.gallery-heading p {
+    max-width: 350px;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.gallery-heading h2 {
+    margin-top: 12px;
+}
+
+/* =================================
+   IMAGE GRID
+================================= */
+
+.dental-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #151915;
+    border: 1px solid rgba(255,255,255,.08);
+    cursor: zoom-in;
+    padding: 0;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform .5s ease, opacity .4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.035);
+    opacity: .88;
+}
+
+.gallery-item::after {
+    content: "↗";
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    background: #a3ff12;
+    color: #080808;
+    border-radius: 50%;
+    font-size: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: .3s ease;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =================================
+   PROJECT FOOTER
+================================= */
+
+.project-end {
+    margin-top: 70px;
+    padding: 45px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.project-end h2 {
+    margin-bottom: 10px;
+}
+
+.project-end p {
+    color: #999;
+    line-height: 1.7;
+}
+
+/* =================================
+   LIGHTBOX
+================================= */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,.96);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 65px 25px 35px;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 95%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    border: 1px solid #555;
+    background: #171717;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: 15px;
+    color: #aaa;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media(max-width: 700px) {
+
+    .dental-gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .gallery-heading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .project-end {
+        padding: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .lightbox img {
+        max-width: 100%;
+        max-height: 75vh;
+    }
+
+}
+
 </style>
 </head>
+
 <body>
+
+<!-- =================================
+     NAVIGATION
+================================= -->
+
 <header>
 <nav class="nav">
-<a class="brand" href="../../../../index.html">✳ MARWAN WAGEH</a>
-<a class="nav-cta" href="../../../../contact.html">Let's Collaborate ↗</a>
+
+<a class="brand" href="../../../../index.html">
+<span class="mark">✳</span> MARWAN WAGEH
+</a>
+
+<div class="navlinks">
+<a href="../../../../index.html">Home</a>
+<a href="../../../../apparel.html">Apparel</a>
+<a href="../../../../brand-identity.html">Branding</a>
+<a href="../../../../social-media.html">Social</a>
+<a href="../../../../contact.html">Contact</a>
+</div>
+
+<a class="nav-cta" href="../../../../contact.html">
+Let's Collaborate ↗
+</a>
+
+<button class="menu" aria-label="Open menu">☰</button>
+
 </nav>
 </header>
 
+
+<!-- =================================
+     MAIN CONTENT
+================================= -->
+
 <main class="wrap">
-<section class="page-hero">
-<div class="eyebrow">SOCIAL MEDIA / PROJECT 05</div>
-<h1>Community Dental Center<span class="accent">.</span></h1>
-<p>A complete social media campaign showcasing dental care, awareness and treatment services.</p>
-<a class="btn outline" href="../../../../social-media.html">← Back to Projects</a>
+
+<!-- PROJECT HERO -->
+
+<section class="page-hero project-hero">
+
+<div class="project-label">
+SOCIAL MEDIA / PROJECT 05
+</div>
+
+<h1>
+Community Dental Center<span class="accent">.</span>
+</h1>
+
+<p class="project-description">
+A complete social media campaign showcasing dental care,
+awareness and treatment services.
+
+Designed to communicate trust, professionalism
+and the importance of dental health through creative visuals.
+</p>
+
+<div class="btns">
+
+<a class="btn outline" href="../../../../social-media.html">
+← Back to Projects
+</a>
+
+<a class="btn" href="../../../../contact.html">
+Start a Project ↗
+</a>
+
+</div>
+
 </section>
 
-<section class="section">
-<div class="eyebrow">PROJECT GALLERY</div>
-<h2>Campaign <span class="accent">Visuals.</span></h2>
-<div class="gallery">
-<img src="community-dental-social-01-campaign-overview.png" alt="Campaign Overview">
-<img src="community-dental-social-02-main-banner.png" alt="Main Banner">
-<img src="community-dental-social-03-toothache-awareness.png" alt="Toothache Awareness">
-<img src="community-dental-social-04-long-term-treatment.png" alt="Long Term Treatment">
-<img src="community-dental-social-05-dental-diagnosis.png" alt="Dental Diagnosis">
-<img src="community-dental-social-06-safe-treatment.png" alt="Safe Treatment">
-<img src="community-dental-social-07-complex-cases.png" alt="Complex Cases">
-<img src="community-dental-social-08-teeth-protection.png" alt="Teeth Protection">
+
+<!-- =================================
+     PROJECT GALLERY
+================================= -->
+
+<section class="section gallery-section">
+
+<div class="gallery-heading">
+
+<div>
+<div class="eyebrow">PROJECT GALLERY / 08 DESIGNS</div>
+
+<h2>
+Campaign <span class="accent">Visuals.</span>
+</h2>
 </div>
+
+<p>
+A collection of creative designs developed
+for Community Dental Center's social media campaign.
+</p>
+
+</div>
+
+
+<div class="dental-gallery" id="dentalGallery">
+
+<button class="gallery-item" type="button"
+data-caption="Campaign Overview">
+
+<img
+src="community-dental-social-01-campaign-overview.png"
+alt="Community Dental Center Campaign Overview"
+loading="lazy">
+
+</button>
+
+
+<button class="gallery-item" type="button"
+data-caption="Main Campaign Banner">
+
+<img
+src="community-dental-social-02-main-banner.png"
+alt="Community Dental Center Main Banner"
+loading="lazy">
+
+</button>
+
+
+<button class="gallery-item" type="button"
+data-caption="Toothache Awareness">
+
+<img
+src="community-dental-social-03-toothache-awareness.png"
+alt="Toothache Awareness Design"
+loading="lazy">
+
+</button>
+
+
+<button class="gallery-item" type="button"
+data-caption="Long Term Treatment">
+
+<img
+src="community-dental-social-04-long-term-treatment.png"
+alt="Long Term Treatment Design"
+loading="lazy">
+
+</button>
+
+
+<button class="gallery-item" type="button"
+data-caption="Dental Diagnosis">
+
+<img
+src="community-dental-social-05-dental-diagnosis.png"
+alt="Dental Diagnosis Design"
+loading="lazy">
+
+</button>
+
+
+<button class="gallery-item" type="button"
+data-caption="Safe Treatment">
+
+<img
+src="community-dental-social-06-safe-treatment.png"
+alt="Safe Treatment Design"
+loading="lazy">
+
+</button>
+
+
+<button class="gallery-item" type="button"
+data-caption="Complex Cases">
+
+<img
+src="community-dental-social-07-complex-cases.png"
+alt="Complex Dental Cases Design"
+loading="lazy">
+
+</button>
+
+
+<button class="gallery-item" type="button"
+data-caption="Teeth Protection">
+
+<img
+src="community-dental-social-08-teeth-protection.png"
+alt="Teeth Protection Design"
+loading="lazy">
+
+</button>
+
+</div>
+
 </section>
+
+
+<!-- =================================
+     BOTTOM CTA
+================================= -->
+
+<section class="project-end">
+
+<div>
+<div class="eyebrow">LET'S WORK TOGETHER</div>
+
+<h2>
+Have a project in mind<span class="accent">?</span>
+</h2>
+
+<p>
+Let's create something clear, distinctive and memorable.
+</p>
+</div>
+
+<a class="btn" href="../../../../contact.html">
+Let's Collaborate ↗
+</a>
+
+</section>
+
 </main>
+
+
+<!-- =================================
+     LIGHTBOX VIEWER
+================================= -->
+
+<div class="lightbox" id="lightbox" role="dialog"
+aria-modal="true" aria-label="Image preview">
+
+<button class="lightbox-close"
+id="lightboxClose"
+aria-label="Close image preview">
+×
+</button>
+
+<img src="" alt="" id="lightboxImage">
+
+<div class="lightbox-caption" id="lightboxCaption"></div>
+
+</div>
+
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer>
+
+<div class="wrap footer-inner">
+
+<span>
+<strong>MARWAN WAGEH</strong> · GRAPHIC DESIGNER
+</span>
+
+<span class="footer-socials">
+
+<a href="https://wa.me/message/2HQW3YF7EU6BL1"
+target="_blank" rel="noopener">
+WhatsApp ↗
+</a>
+
+<a href="https://www.instagram.com/_marwan_ghaith_?cplk=eXBucGxkaXR2Zm8="
+target="_blank" rel="noopener">
+Instagram ↗
+</a>
+
+<a href="https://www.facebook.com/share/1CVka5L1od/"
+target="_blank" rel="noopener">
+Facebook ↗
+</a>
+
+</span>
+
+<span>
+ISMAILIA, EGYPT · <span data-year></span>
+</span>
+
+</div>
+
+</footer>
+
+
+<!-- MAIN WEBSITE JS -->
+<script src="../../../../assets/main.js"></script>
+
+
+<!-- LIGHTBOX JAVASCRIPT -->
+<script>
+
+const galleryItems = document.querySelectorAll(".gallery-item");
+
+const lightbox = document.getElementById("lightbox");
+
+const lightboxImage = document.getElementById("lightboxImage");
+
+const lightboxCaption = document.getElementById("lightboxCaption");
+
+const lightboxClose = document.getElementById("lightboxClose");
+
+
+function openLightbox(image, caption) {
+
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
+
+    lightboxCaption.textContent = caption;
+
+    lightbox.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+    lightboxClose.focus();
+
+}
+
+
+function closeLightbox() {
+
+    lightbox.classList.remove("active");
+
+    lightboxImage.src = "";
+
+    document.body.style.overflow = "";
+
+}
+
+
+galleryItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        const image = item.querySelector("img");
+
+        const caption = item.dataset.caption;
+
+        openLightbox(image, caption);
+
+    });
+
+});
+
+
+lightboxClose.addEventListener("click", closeLightbox);
+
+
+lightbox.addEventListener("click", event => {
+
+    if (event.target === lightbox) {
+        closeLightbox();
+    }
+
+});
+
+
+document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape" && lightbox.classList.contains("active")) {
+        closeLightbox();
+    }
+
+});
+
+
+</script>
+
 </body>
 </html>
